@@ -193,13 +193,4 @@
     }
 }
 
-:global(.VPHome .VPHero .container .main) {
-    &:global(>.name) {
-        font-weight: 701;
-    }
-
-    &:global(>.text) {
-        font-weight: 699;
-    }
-}
 </style>

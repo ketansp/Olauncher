@@ -12,6 +12,11 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/ketansp/Olauncher
+  image:
+    src: /logo.png
+    alt: Launch0 Logo
+    width: 280
+    height: 280
 
 features:
   - icon: ✨

@@ -1,0 +1,179 @@
+/**
+ * Launch0 custom theme
+ * Inspired by node-llama-cpp's VitePress customizations
+ */
+
+/* ─── Brand colors ─── */
+:root {
+  --vp-c-brand-1: #2563eb;
+  --vp-c-brand-2: #3b82f6;
+  --vp-c-brand-3: #60a5fa;
+  --vp-c-brand-soft: rgb(37 99 235 / 14%);
+
+  --theme-color-1: #60a5fa;
+  --theme-color-2: #a78bfa;
+}
+
+.dark {
+  --vp-c-brand-1: #93c5fd;
+  --vp-c-brand-2: #60a5fa;
+  --vp-c-brand-3: #3b82f6;
+  --vp-c-brand-soft: rgb(96 165 250 / 16%);
+
+  --theme-color-1: #93c5fd;
+  --theme-color-2: #c4b5fd;
+}
+
+/* ─── Hero gradient text ─── */
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg, var(--theme-color-2) 16%, var(--theme-color-1)
+  ) 0% 0% / 200% 100%;
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    120deg, var(--theme-color-1) 50%, var(--theme-color-2) 50%
+  );
+  --vp-home-hero-image-filter: blur(40px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(72px);
+  }
+}
+
+/* ─── Hero image ─── */
+.VPHero .VPImage {
+  border-radius: 24px;
+  background-color: color-mix(in srgb, var(--vp-c-text-1) 6%, transparent);
+}
+
+/* ─── Hide logo on home page ─── */
+.VPNavBar.home .title .logo {
+  display: none;
+}
+
+/* ─── Transparent navbar with blur ─── */
+.VPNav .VPNavBar {
+  background-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
+.VPNav .VPNavBar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  backdrop-filter: blur(8px);
+  background-color: color-mix(in srgb, var(--vp-c-bg) 60%, transparent);
+  mask: linear-gradient(to bottom, black 50%, transparent);
+}
+
+.dark .VPNav .VPNavBar::before {
+  background-color: color-mix(in srgb, var(--vp-c-bg) 80%, transparent);
+}
+
+/* ─── Rounded corners everywhere ─── */
+.VPButton {
+  border-radius: 12px !important;
+}
+
+.vp-code-group .tabs label {
+  border-radius: 12px 12px 0 0;
+}
+
+div[class*="language-"] {
+  border-radius: 12px;
+}
+
+.vp-doc :not(pre) > code {
+  border-radius: 8px;
+}
+
+.VPNavBarSearch .DocSearch-Button,
+.VPNavBarSearch button.DocSearch-Button {
+  border-radius: 12px;
+}
+
+.custom-block {
+  border-radius: 12px;
+}
+
+.pager-link {
+  border-radius: 12px;
+}
+
+.VPFeature {
+  border-radius: 16px !important;
+}
+
+/* ─── Feature cards: icon + title side by side ─── */
+.VPFeature > article.box {
+  display: grid;
+  grid-template-areas:
+    "icon title"
+    "details details"
+    "link link";
+  grid-template-columns: auto 1fr;
+  column-gap: 16px;
+  border: none;
+}
+
+.VPFeature .icon {
+  grid-area: icon;
+  margin-bottom: 0;
+}
+
+.VPFeature .title {
+  grid-area: title;
+  align-self: center;
+}
+
+.VPFeature .details {
+  grid-area: details;
+}
+
+.VPFeature .link-text {
+  grid-area: link;
+}
+
+/* ─── Feature card hover ─── */
+.VPFeature {
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.VPFeature:hover {
+  border-color: var(--vp-c-brand-1) !important;
+}
+
+/* ─── Table styling in panels ─── */
+.vp-doc table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ─── Home page hero font weights ─── */
+.VPHome .VPHero .container .main > .name {
+  font-weight: 701;
+}
+
+.VPHome .VPHero .container .main > .text {
+  font-weight: 699;
+}
+
+/* ─── Smooth page load ─── */
+#app {
+  animation: app-show backwards 0.3s 0.15s ease-in-out;
+}
+
+@keyframes app-show {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
