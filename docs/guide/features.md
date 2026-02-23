@@ -2,10 +2,10 @@
 
 ## Home Screen
 
-- **Text-based app shortcuts** — up to 8 apps displayed as text on the home screen
+- **Text-based app shortcuts** — up to 8 apps displayed as text on the home screen for instant access
 - **Date and time display** — show full date/time, date only, or hide completely
 - **App alignment** — left, center, or right alignment with optional bottom positioning
-- **Screen time** — see how long you've used your phone today
+- **Screen time** — stay aware of how long you've used your phone today
 
 ## App Drawer
 

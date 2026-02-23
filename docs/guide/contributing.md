@@ -27,4 +27,4 @@ Launch0 is licensed under the [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.e
 
 ## Acknowledgments
 
-Launch0 is a fork of [Olauncher](https://github.com/tanujnotes/Olauncher) by [tanujnotes](https://github.com/tanujnotes). Thank you for creating and open-sourcing such a great minimal launcher.
+Launch0 is a fork of [Olauncher](https://github.com/tanujnotes/Olauncher) by [tanujnotes](https://github.com/tanujnotes). Thank you for creating and open-sourcing such a great launcher.
