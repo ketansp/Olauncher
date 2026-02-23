@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: Launch0
-  text: Minimal AF Launcher
-  tagline: A clean, open-source Android launcher. No icons, no ads, no data collection. AF stands for Ad-Free.
+  text: The Productivity Launcher
+  tagline: A fast, open-source Android launcher. Instant app access, powerful gestures, zero clutter. No ads, no data collection.
   actions:
     - theme: brand
       text: Get Started
@@ -14,8 +14,8 @@ hero:
       link: https://github.com/ketansp/Olauncher
 
 features:
-  - title: Minimalist
-    details: A clean homescreen with no icons or distractions. Just the apps you need, as text.
+  - title: Built for Speed
+    details: Launch apps instantly with text-based shortcuts, gesture controls, and auto-launch search. No icons to scroll through.
   - title: Privacy-First
     details: No data collection, no ads, no tracking. Everything stays on your device.
   - title: Open Source

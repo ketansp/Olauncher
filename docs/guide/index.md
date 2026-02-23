@@ -1,16 +1,17 @@
 # What is Launch0?
 
-Launch0 is a minimal, open-source Android launcher. It replaces your home screen with a clean, text-based interface — no app icons, no widgets, no distractions.
+Launch0 is a productivity-focused, open-source Android launcher. It replaces your home screen with a fast, text-based interface — instant app access, powerful gestures, and a streamlined layout that keeps you focused on getting things done.
 
 It is a fork of [Olauncher](https://github.com/tanujnotes/Olauncher) by [tanujnotes](https://github.com/tanujnotes). All credit for the original design and implementation goes to the Olauncher team.
 
-## Why a minimal launcher?
+## Why a productivity launcher?
 
-The average person checks their phone 96 times a day. A minimal launcher helps you:
+The average person checks their phone 96 times a day. Launch0 helps you make each interaction count:
 
-- **Reduce screen time** by removing visual triggers that pull you into apps
-- **Stay intentional** about which apps you open
-- **Keep your focus** on what matters
+- **Launch apps faster** with text shortcuts and instant search
+- **Stay focused** with a clutter-free home screen
+- **Track your screen time** to stay aware of your usage
+- **Use gesture shortcuts** to access apps and controls in a single swipe
 
 ## Quick Start
 
