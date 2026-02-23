@@ -13,10 +13,10 @@ hero:
       text: View on GitHub
       link: https://github.com/ketansp/Olauncher
   image:
-    src: /logo.png
+    src: /logo.svg
     alt: Launch0 Logo
-    width: 280
-    height: 280
+    width: 320
+    height: 320
 
 features:
   - icon: ✨
