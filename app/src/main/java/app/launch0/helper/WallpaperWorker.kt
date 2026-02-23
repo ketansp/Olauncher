@@ -17,13 +17,14 @@ class WallpaperWorker(appContext: Context, workerParams: WorkerParameters) : Cor
             if (isLaunch0Default(applicationContext).not())
                 true
             else if (prefs.dailyWallpaper) {
-                val wallType = checkWallpaperType()
-                val wallpaperUrl = getTodaysWallpaper(wallType, prefs.firstOpenTime)
-                if (prefs.dailyWallpaperUrl == wallpaperUrl)
+                val isDark = checkWallpaperType() == Constants.WALL_TYPE_DARK
+                val seed = WallpaperGenerator.getTodaySeed()
+                if (prefs.dailyWallpaperSeed == seed)
                     true
                 else {
-                    prefs.dailyWallpaperUrl = wallpaperUrl
-                    setWallpaper(applicationContext, wallpaperUrl)
+                    val result = WallpaperGenerator.generateAndSetWallpaper(applicationContext, seed, isDark)
+                    if (result) prefs.dailyWallpaperSeed = seed
+                    result
                 }
             } else
                 true
