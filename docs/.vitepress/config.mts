@@ -17,6 +17,7 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/' },
       { text: 'Features', link: '/guide/features' },
+      { text: 'Download', link: '/download' },
       { text: 'Privacy', link: '/privacy' },
     ],
 
