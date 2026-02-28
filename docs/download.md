@@ -12,16 +12,17 @@ You can also browse all releases on the [GitHub Releases page](https://github.co
 
 ## Installation
 
-Since the APK is not installed from the Play Store, you'll need to allow installation from unknown sources:
+Since the APK is installed outside the Play Store, you may see a couple of prompts. This is normal for sideloaded open-source apps.
 
 1. Download the APK file using the link above.
 2. Open the downloaded file on your Android device.
 3. If prompted, tap **Settings** and enable **Allow from this source**.
-4. Tap **Install**.
-5. Once installed, press the Home button and select **Launch0** as your launcher.
+4. If Google Play Protect shows **"App blocked to protect your device"**, tap **"More details"** and then **"Install anyway"**.
+5. Tap **Install**.
+6. Once installed, press the Home button and select **Launch0** as your launcher.
 
-::: tip
-Since this APK is not from the Play Store, Android will warn you about installing from an unknown source. This is normal for open-source apps. You can verify the source code on [GitHub](https://github.com/ketansp/launch0).
+::: tip Why does Play Protect block this?
+Google Play Protect flags apps that aren't distributed through the Play Store and haven't been reviewed by Google. This is standard for all sideloaded apps — it does not mean the app is harmful. Launch0 is fully open source and you can verify the code on [GitHub](https://github.com/ketansp/launch0).
 :::
 
 ## Requirements
