@@ -36,11 +36,24 @@ jobs:
             -PversionNameOverride=${{ inputs.version_name }} \
             -PversionCodeOverride=${{ inputs.version_code }}
 
+      - name: Sign APK
+        run: |
+          keytool -genkey -v -keystore launch0.keystore \
+            -alias launch0 -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass launch0 -keypass launch0 \
+            -dname "CN=Launch0, O=Launch0"
+          BUILD_TOOLS=$(ls -d $ANDROID_HOME/build-tools/*/ | sort -V | tail -1)
+          ${BUILD_TOOLS}apksigner sign \
+            --ks launch0.keystore --ks-key-alias launch0 \
+            --ks-pass pass:launch0 --key-pass pass:launch0 \
+            --out app/build/outputs/apk/release/app-release.apk \
+            app/build/outputs/apk/release/app-release-unsigned.apk
+
       - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${{ inputs.version_name }}" \
-            app/build/outputs/apk/release/app-release-unsigned.apk \
+            app/build/outputs/apk/release/app-release.apk \
             --title "Launch0 ${{ inputs.version_name }}" \
             --notes "Release ${{ inputs.version_name }} (version code ${{ inputs.version_code }})"
