@@ -13,7 +13,7 @@ on:
         type: string
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -36,8 +36,11 @@ jobs:
             -PversionNameOverride=${{ inputs.version_name }} \
             -PversionCodeOverride=${{ inputs.version_code }}
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: launch0-${{ inputs.version_name }}-release.apk
-          path: app/build/outputs/apk/release/app-release-unsigned.apk
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ inputs.version_name }}" \
+            app/build/outputs/apk/release/app-release-unsigned.apk \
+            --title "Launch0 ${{ inputs.version_name }}" \
+            --notes "Release ${{ inputs.version_name }} (version code ${{ inputs.version_code }})"
