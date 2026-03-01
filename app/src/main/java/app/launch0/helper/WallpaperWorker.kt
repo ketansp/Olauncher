@@ -23,14 +23,14 @@ class WallpaperWorker(appContext: Context, workerParams: WorkerParameters) : Cor
         val success =
             if (isLaunch0Default(applicationContext).not())
                 true
-            else if (prefs.dailyWallpaper) {
-                val todaySeed = getTodaySeed()
-                if (prefs.dailyWallpaperUrl == todaySeed)
+            else if (prefs.hourlyWallpaper) {
+                val todaySeed = getCurrentSeed()
+                if (prefs.hourlyWallpaperSeed == todaySeed)
                     true
                 else {
                     val isDark = checkIsDarkTheme()
                     val generated = generateAndSetWallpaper(isDark, todaySeed)
-                    if (generated) prefs.dailyWallpaperUrl = todaySeed
+                    if (generated) prefs.hourlyWallpaperSeed = todaySeed
                     generated
                 }
             } else
@@ -63,8 +63,8 @@ class WallpaperWorker(appContext: Context, workerParams: WorkerParameters) : Cor
         }
     }
 
-    private fun getTodaySeed(): String {
-        return SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
+    private fun getCurrentSeed(): String {
+        return SimpleDateFormat("yyyy-MM-dd-HH", Locale.US).format(Date())
     }
 
     private fun checkIsDarkTheme(): Boolean {

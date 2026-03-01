@@ -23,7 +23,7 @@
     <string name="donate">Donera</string>
     <string name="swipe_up_for_apps">1. Svep uppåt för alla appar\n2. Långtryck var som helst för inställningar</string>
     <string name="apps_on_home_screen">Appar på startskärmen</string>
-    <string name="daily_wallpaper_update">Daglig ny bakgrundsbild</string>
+    <string name="hourly_wallpaper_update">Ny bakgrundsbild varje timme</string>
     <string name="left">Vänster</string>
     <string name="right">Höger</string>
     <string name="center">Mitten</string>
@@ -67,7 +67,7 @@
         \n\nObs: Inga data om appanvändning samlas in. Allt bearbetas på din enhet.</string>
     <string name="pro_message">Launch0 har också en pro-version som kallas Pro Launcher. Den har extra funktioner som väder, widgets, typsnitt, mappar, AMOLED-bakgrunder och så vidare.
         \n\nDet är också det bästa sättet att stödja utvecklarna av Launch0. Kolla in det!</string>
-    <string name="wallpaper_message">Launch0 erbjuder vackra nya bakgrundsbilder varje dag. Ge din hemskärm ett fräscht utseende varje dag, gratis!
+    <string name="wallpaper_message">Launch0 erbjuder vackra nya bakgrundsbilder varje timme. Ge din hemskärm ett fräscht utseende under hela dagen, gratis!
         \n\nVill du prova?</string>
     <string name="accessibility_service_description">Tillgänglighetsbehörigheten krävs för att aktivera dubbeltryck för att låsa. Eventuella data förvärvade av Launch0 genom denna tjänst kommer inte att lämna din enhet.</string>
     <string name="support_olauncher_for_free">Stöd Launch0 utan kostnad genom att använda vår Amazon-affiliatelänk.</string>

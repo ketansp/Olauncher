@@ -24,7 +24,7 @@
     <string name="donate">Пожертвувати</string>
     <string name="swipe_up_for_apps">1. Проведіть вгору, щоб відкрити всі програми.\n2. Тривалим натисканням будь-де відкриваються налаштування</string>
     <string name="apps_on_home_screen">Кількість програм на головному екрані</string>
-    <string name="daily_wallpaper_update">Щодня нові шпалери</string>
+    <string name="hourly_wallpaper_update">Щогодини нові шпалери</string>
     <string name="left">Ліворуч</string>
     <string name="right">Праворуч</string>
     <string name="center">По центру</string>
@@ -68,7 +68,7 @@
         \n\nПримітка: Не збираються дані про використання програми. Все обробляється на вашому пристрої.</string>
     <string name="pro_message">Launch0 також має професійну версію під назвою Pro Launcher. Вона має додаткові функції, такі як погода, віджети, шрифти, папки, фони AMOLED тощо.
         \n\nЦе також найкращий спосіб підтримати розробників Launch0. Ознайомтеся!</string>
-    <string name="wallpaper_message">Launch0 пропонує красиві нові шпалери щодня. Дайте вашому головному екрану новий вигляд кожного дня, безкоштовно!
+    <string name="wallpaper_message">Launch0 пропонує красиві нові шпалери щогодини. Дайте вашому головному екрану новий вигляд протягом дня, безкоштовно!
         \n\nХочете спробувати?</string>
     <string name="accessibility_service_description">" Дозвіл на доступ потрібний, щоб увімкнути подвійне торкання для блокування. Будь-які дані, отримані Launch0 через цей сервіс, не залишать ваш пристрій."</string>
     <string name="support_olauncher_for_free">Підтримайте Launch0 безкоштовно, використовуючи наше партнерське посилання Amazon.</string>

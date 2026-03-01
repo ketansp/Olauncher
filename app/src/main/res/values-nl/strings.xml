@@ -23,7 +23,7 @@
     <string name="donate">Doneren</string>
     <string name="swipe_up_for_apps">1. Veeg omhoog voor alle apps\n2. Ergens lang indrukken voor instellingen</string>
     <string name="apps_on_home_screen">Apps op startscherm</string>
-    <string name="daily_wallpaper_update">Dagelijks nieuwe achtergrond</string>
+    <string name="hourly_wallpaper_update">Elk uur nieuwe achtergrond</string>
     <string name="left">Links</string>
     <string name="right">Rechts</string>
     <string name="center">Midden</string>
@@ -69,7 +69,7 @@
         \n\nOpmerking: er worden geen app-gebruiksgegevens verzameld. Alles wordt op je apparaat verwerkt.</string>
     <string name="pro_message">Launch0 heeft ook een pro-versie genaamd Pro Launcher. Deze heeft extra functies zoals weer, widgets, lettertypen, mappen, AMOLED-achtergronden enz.
         \n\nHet is ook de beste manier om de ontwikkelaars van Launch0 te steunen. Bekijk het eens!</string>
-    <string name="wallpaper_message">Launch0 biedt dagelijks mooie nieuwe achtergronden. Geef je startscherm iedere dag een frisse nieuwe look, gratis!
+    <string name="wallpaper_message">Launch0 biedt elk uur mooie nieuwe achtergronden. Geef je startscherm de hele dag een frisse nieuwe look, gratis!
         \n\nWil je het proberen?</string>
     <string name="accessibility_service_description">De toegankelijkheidstoestemming is vereist om dubbel tikken om te vergrendelen mogelijk te maken. Alle gegevens die Launch0 via deze service verkrijgt, verlaten je apparaat niet.</string>
     <string name="support_olauncher_for_free">Steun Launch0 gratis door onze Amazon-affiliatelink te gebruiken.</string>

@@ -372,8 +372,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun setWallpaperWorker() {
-        val workRequest = PeriodicWorkRequestBuilder<WallpaperWorker>(4, TimeUnit.HOURS)
-            .setBackoffCriteria(BackoffPolicy.LINEAR, 1, TimeUnit.HOURS)
+        val workRequest = PeriodicWorkRequestBuilder<WallpaperWorker>(1, TimeUnit.HOURS)
+            .setBackoffCriteria(BackoffPolicy.LINEAR, 15, TimeUnit.MINUTES)
             .build()
         WorkManager
             .getInstance(appContext)
@@ -386,8 +386,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun cancelWallpaperWorker() {
         WorkManager.getInstance(appContext).cancelUniqueWork(Constants.WALLPAPER_WORKER_NAME)
-        prefs.dailyWallpaperUrl = ""
-        prefs.dailyWallpaper = false
+        prefs.hourlyWallpaperSeed = ""
+        prefs.hourlyWallpaper = false
     }
 
     fun updateHomeAlignment(gravity: Int) {

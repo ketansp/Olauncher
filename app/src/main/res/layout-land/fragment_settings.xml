@@ -508,16 +508,16 @@
                     android:animateLayoutChanges="true">
 
                     <TextView
-                        android:id="@+id/dailyWallpaperUrl"
+                        android:id="@+id/hourlyWallpaperLabel"
                         style="@style/TextSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:paddingVertical="8dp"
-                        android:text="@string/daily_wallpaper_update" />
+                        android:text="@string/hourly_wallpaper_update" />
 
                     <TextView
-                        android:id="@+id/dailyWallpaper"
+                        android:id="@+id/hourlyWallpaper"
                         style="@style/TextSmallBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

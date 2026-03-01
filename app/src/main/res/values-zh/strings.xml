@@ -60,7 +60,7 @@
     <string name="donate">捐赠</string>
     <string name="swipe_up_for_apps">1. 向上滑动查看所有应用\n2.长按任意位置进行设置</string>
     <string name="apps_on_home_screen">主屏幕上的应用程序</string>
-    <string name="daily_wallpaper_update">每日新壁纸</string>
+    <string name="hourly_wallpaper_update">每小时新壁纸</string>
     <string name="left">左对齐</string>
     <string name="right">右对齐</string>
     <string name="center">居中</string>
@@ -101,7 +101,7 @@
         \n\n注意：不收集应用程序使用数据。所有数据都在您的设备上处理。</string>
     <string name="pro_message">Launch0 还有一个名为 Pro Launcher 的专业版。它具有额外的功能，如天气、部件、字体、文件夹、AMOLED 壁纸等。
         \n\n这也是支持 Launch0 开发者的最佳方式。快来看看吧！</string>
-    <string name="wallpaper_message">Launch0每天提供美丽的新壁纸。让你的主屏幕每天焕然一新，免费！
+    <string name="wallpaper_message">Launch0每小时提供美丽的新壁纸。让你的主屏幕全天焕然一新，免费！
         \n\n想试试吗？</string>
     <string name="accessibility_service_description">请在手机设置中搜索数字健康并启用它。</string>
     <string name="support_olauncher_for_free">使用我们的亚马逊附属链接免费支持 Launch0。</string>

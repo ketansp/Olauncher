@@ -24,7 +24,7 @@
     <string name="donate">Donasi</string>
     <string name="swipe_up_for_apps">1. Geser ke atas untuk semua aplikasi\n2. Tekan lama di mana saja untuk pengaturan</string>
     <string name="apps_on_home_screen">Aplikasi di layar awal</string>
-    <string name="daily_wallpaper_update">Wallpaper baru setiap hari</string>
+    <string name="hourly_wallpaper_update">Wallpaper baru setiap jam</string>
     <string name="left">Kiri</string>
     <string name="right">kanan</string>
     <string name="center">Tengah</string>
@@ -67,7 +67,7 @@
         \n\nCatatan: Tidak ada data penggunaan aplikasi yang dikumpulkan. Semua diproses di perangkat Anda.</string>
     <string name="pro_message">Launch0 juga memiliki versi pro yang disebut Pro Launcher. Ini memiliki fitur tambahan seperti cuaca, widget, font, folder, wallpaper AMOLED, dan banyak lagi.
         \n\nIni juga merupakan cara terbaik untuk mendukung pengembang Launch0. Cek it out!</string>
-    <string name="wallpaper_message">Launch0 menawarkan wallpaper baru yang indah setiap hari. Berikan tampilan baru pada layar utama Anda setiap hari, secara gratis!
+    <string name="wallpaper_message">Launch0 menawarkan wallpaper baru yang indah setiap jam. Berikan tampilan baru pada layar utama Anda sepanjang hari, secara gratis!
         \n\nIngin mencobanya?</string>
     <string name="accessibility_service_description">Izin aksesibilitas diperlukan untuk mengaktifkan ketuk dua kali untuk mengunci. Data apa pun yang diperoleh Launch0 melalui layanan ini tidak akan meninggalkan perangkat Anda.</string>
     <string name="support_olauncher_for_free">Dukung Launch0 secara gratis dengan menggunakan tautan afiliasi Amazon kami.</string>

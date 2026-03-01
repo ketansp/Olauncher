@@ -68,7 +68,7 @@
     <string name="donate">تبرّع</string>
     <string name="swipe_up_for_apps">1. مرر لأعلى لجميع التطبيقات\n2. اضغط مطوّلًا في أي مكان للإعدادات</string>
     <string name="apps_on_home_screen">التطبيقات على الشاشة الرئيسية</string>
-    <string name="daily_wallpaper_update">تحديث الخلفية يوميّا</string>
+    <string name="hourly_wallpaper_update">خلفية جديدة كل ساعة</string>
     <string name="left">يسار</string>
     <string name="right">يمين</string>
     <string name="center">مركز</string>
@@ -98,7 +98,7 @@
         \n\nملاحظة: لا يتم جمع أي بيانات حول استخدام التطبيقات. يتم معالجة كل شيء على جهازك.</string>
     <string name="pro_message">يحتوي Launch0 أيضًا على إصدار احترافي يسمى Pro Launcher. يحتوي على ميزات إضافية مثل الطقس، والأدوات، والخطوط، والمجلدات، وخلفيات AMOLED، وما إلى ذلك.
         \n\nإنه أيضًا أفضل طريقة لدعم مطوري Launch0. تحقق من ذلك!</string>
-    <string name="wallpaper_message">يقدم Launch0 خلفيات جميلة جديدة يوميًا. امنح شاشتك الرئيسية مظهرًا جديدًا كل يوم، مجانًا!
+    <string name="wallpaper_message">يقدم Launch0 خلفيات جميلة جديدة كل ساعة. امنح شاشتك الرئيسية مظهرًا جديدًا طوال اليوم، مجانًا!
         \n\nهل ترغب في تجربته؟</string>
     <string name="accessibility_service_description">إذن الوصول مطلوب لتمكين النقر المزدوج للقفل. أي بيانات حصل عليها Launch0 عبر هذه الخدمة لن تترك جهازك.</string>
     <string name="support_olauncher_for_free">ادعم Launch0 مجانًا باستخدام رابط الشراكة التابع لشركة Amazon.</string>
