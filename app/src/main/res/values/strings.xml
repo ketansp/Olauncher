@@ -41,7 +41,7 @@
     <string name="donate">Donate</string>
     <string name="swipe_up_for_apps">1. Swipe up for all apps\n2. Long press anywhere for settings</string>
     <string name="apps_on_home_screen">Apps on home screen</string>
-    <string name="daily_wallpaper_update">Daily new wallpaper</string>
+    <string name="hourly_wallpaper_update">New wallpaper every hour</string>
     <string name="left">Left</string>
     <string name="right">Right</string>
     <string name="center">Center</string>
@@ -83,7 +83,7 @@
     <string name="app_usage_message">To show/hide your screen time on the home screen, please allow or disallow the app usage permission.
         \n\nNote: No app usage data is collected. Everything is processed on your device.</string>
     <string name="pro_message">Launch0 is a fork of Olauncher. Check out the original Olauncher and its pro version for extra features like weather, widgets, fonts, folders, AMOLED wallpapers, and so on.</string>
-    <string name="wallpaper_message">Launch0 offers beautiful new wallpapers daily. Give your homescreen a fresh new look every day, for free!
+    <string name="wallpaper_message">Launch0 offers beautiful new wallpapers every hour. Give your homescreen a fresh new look throughout the day, for free!
         \n\nWant to try it?</string>
     <string name="accessibility_service_description">The accessibility permission is required to enable double tap to lock. Any data acquired by Launch0 via this service will not leave your device.</string>
     <string name="support_olauncher_for_free">Support Launch0 for free by using our Amazon affiliate link.</string>

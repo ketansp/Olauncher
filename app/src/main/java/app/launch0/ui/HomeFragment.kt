@@ -176,8 +176,8 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnLongClickListener 
         }
         viewModel.isLaunch0Default.observe(viewLifecycleOwner, Observer {
             if (it != true) {
-                if (prefs.dailyWallpaper) {
-                    prefs.dailyWallpaper = false
+                if (prefs.hourlyWallpaper) {
+                    prefs.hourlyWallpaper = false
                     viewModel.cancelWallpaperWorker()
                 }
                 prefs.homeBottomAlignment = false
@@ -560,10 +560,10 @@ class HomeFragment : Fragment(), View.OnClickListener, View.OnLongClickListener 
     }
 
     private fun changeAppTheme() {
-        if (prefs.dailyWallpaper.not()) return
+        if (prefs.hourlyWallpaper.not()) return
         val changedAppTheme = getChangedAppTheme(requireContext(), prefs.appTheme)
         prefs.appTheme = changedAppTheme
-        if (prefs.dailyWallpaper) {
+        if (prefs.hourlyWallpaper) {
             setPlainWallpaperByTheme(requireContext(), changedAppTheme)
             viewModel.setWallpaperWorker()
         }

@@ -24,7 +24,7 @@
     <string name="donate">Fazer donativo</string>
     <string name="swipe_up_for_apps">1. Deslize para cima para ver todos os aplicativos\n2. Pressione continuamente em qualquer ponto do ecrã para aceder às configurações</string>
     <string name="apps_on_home_screen">Aplicativos na home</string>
-    <string name="daily_wallpaper_update">Novo fundo de ecrã diariamente</string>
+    <string name="hourly_wallpaper_update">Novo fundo de ecrã a cada hora</string>
     <string name="left">Esquerda</string>
     <string name="right">Direita</string>
     <string name="center">Centro</string>
@@ -67,7 +67,7 @@
         \n\nNota: Não são coletados dados de uso do aplicativo. Tudo é processado no seu dispositivo.</string>
     <string name="pro_message">Launch0 também tem uma versão pro chamada Pro Launcher. Tem recursos extras como clima, widgets, fontes, pastas, papéis de parede AMOLED, e assim por diante.
         \n\nÉ também a melhor maneira de apoiar os desenvolvedores do Launch0. Confira!</string>
-    <string name="wallpaper_message">Launch0 oferece lindos papéis de parede novos todos os dias. Dê uma nova aparência à sua tela inicial todos os dias, gratuitamente!
+    <string name="wallpaper_message">Launch0 oferece lindos papéis de parede novos a cada hora. Dê uma nova aparência à sua tela inicial ao longo do dia, gratuitamente!
         \n\nQuer tentar?</string>
     <string name="accessibility_service_description">A permissão de acessibilidade é necessária para ativar o toque duplo para bloquear. Quaisquer dados adquiridos pelo Launch0 através deste serviço não sairão do seu dispositivo.</string>
     <string name="support_olauncher_for_free">Apoie o Launch0 gratuitamente usando nosso link de afiliado da Amazon.</string>

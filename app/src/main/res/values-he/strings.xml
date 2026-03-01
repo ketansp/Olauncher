@@ -22,7 +22,7 @@
     <string name="donate">תרומה</string>
     <string name="swipe_up_for_apps">1. החלקה כלפי מעלה תפתח את הרשימה של כל היישומים\n2. לפתיחת הגדרות מסך הבית יש ללחוץ לחיצה ארוכה מכל מקום על גבי המסך.</string>
     <string name="apps_on_home_screen">יישומים במסך הבית</string>
-    <string name="daily_wallpaper_update">רקע חדש בכל יום</string>
+    <string name="hourly_wallpaper_update">רקע חדש בכל שעה</string>
     <string name="left">ימין</string>
     <string name="right">שמאל</string>
     <string name="center">מרכז</string>
@@ -60,7 +60,7 @@
         \n\nהיית רוצה אולי לספר לחברים שלך על Launch0? זה יכול לסייע לנו מאוד. תודה רבה!</string>
     <string name="keyboard_message">היי, יותר מהיר למצוא ולפתוח יישומים ב־Launch0 בעזרת ההקלדה. אולי בכל זאת היית רוצה להשאיר את ההגדרה הזאת ולתת לה עוד הזדמנות?
         \n\nThe choice is always yours.</string>
-    <string name="wallpaper_message">Launch0 מציע טפטים חדשים ויפים מדי יום. תנו למסך הבית שלכם מראה חדש ורענן בכל יום, בחינם! רוצים לנסות?</string>
+    <string name="wallpaper_message">Launch0 מציע טפטים חדשים ויפים בכל שעה. תנו למסך הבית שלכם מראה חדש ורענן לאורך כל היום, בחינם! רוצים לנסות?</string>
     <string name="accessibility_service_description">הרשאת הנגישות נחוצה להפעלת הנעילה בהקשה כפולה. כל הנתונים שייאספו על ידי Launch0 דרך השירות הזה לא יועברו הלאה ממכשירך.</string>
     <string name="support_olauncher_for_free">אפשר לתמוך ב־Launch0 מבלי לשלם שקל, בעזרת שימוש בקישור ה־Amazon affiliate שלנו.</string>
     <string name="support_olauncher_message">על כל רכישה שתבוצע דרך הקישור שלנו אנחנו נקבל עמלה קטנה. נשמח אם תשמרו את הקישור ותשתמשו בו בקניות מהאינטרנט.\nתודה רבה!</string>

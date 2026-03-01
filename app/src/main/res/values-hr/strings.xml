@@ -23,7 +23,7 @@
     <string name="donate">Doniraj</string>
     <string name="swipe_up_for_apps">1. Povuci prema gore za aplikacije\n2. Dugo pritisnite bilo gdje za postavke</string>
     <string name="apps_on_home_screen">Aplikacije na početnoj stranici</string>
-    <string name="daily_wallpaper_update">Dnevne pozadine</string>
+    <string name="hourly_wallpaper_update">Nova pozadina svaki sat</string>
     <string name="left">Lijevo</string>
     <string name="right">Desno</string>
     <string name="center">Sredina</string>
@@ -67,7 +67,7 @@
         \n\nNapomena: Ne prikupljaju se podaci o korištenju aplikacije. Sve se obrađuje na vašem uređaju.</string>
     <string name="pro_message">Launch0 također ima pro verziju pod nazivom Pro Launcher. Ima dodatne značajke poput vremena, widgeta, fontova, mapa, AMOLED pozadina itd.
         \n\nTo je također najbolji način da podržite programere Launch0-a. Pogledajte!</string>
-    <string name="wallpaper_message">Launch0 nudi predivne nove pozadine svaki dan. Daj svom početnom ekranu svjež izgled svaki dan, besplatno!
+    <string name="wallpaper_message">Launch0 nudi predivne nove pozadine svaki sat. Daj svom početnom ekranu svjež izgled tijekom dana, besplatno!
         \n\nŽeliš li isprobati?</string>
     <string name="accessibility_service_description">Dozvola za pristupačnost potrebna je za omogućavanje zaključavanja dvostrukim dodirom. Bilo koji podatci prikupljeni ovim servisom neće napustiti tvoj uređaj.</string>
     <string name="support_olauncher_for_free">Besplatno podrži Launch0 korištenjem naše sponzorske poveznice za Amazon.</string>
