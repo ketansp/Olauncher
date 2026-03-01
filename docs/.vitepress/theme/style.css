@@ -51,8 +51,8 @@
 
 /* ─── Hero image ─── */
 .VPHero .VPImage {
-  border-radius: 0;
-  background-color: transparent;
+  border-radius: 21%;
+  background-color: #000;
 }
 
 /* ─── Hide logo on home page ─── */
