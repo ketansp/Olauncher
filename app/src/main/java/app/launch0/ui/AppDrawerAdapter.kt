@@ -71,11 +71,14 @@ class AppDrawerAdapter(
         try {
             if (appFilteredList.size == 0 || position == RecyclerView.NO_POSITION) return
             val appModel = appFilteredList[holder.bindingAdapterPosition]
+            val highlighted = isHighlighted(appModel.appLabel)
             holder.bind(
                 flag,
                 appLabelGravity,
                 myUserHandle,
                 appModel,
+                highlighted,
+                highlightLetter != null,
                 appClickListener,
                 appDeleteListener,
                 appInfoListener,
@@ -161,13 +164,42 @@ class AppDrawerAdapter(
             appClickListener(appFilteredList[0])
     }
 
+    fun getPositionForLetter(letter: String): Int {
+        if (letter == "#") {
+            val pos = appFilteredList.indexOfFirst { app ->
+                app.appLabel.isNotEmpty() && !app.appLabel[0].isLetter()
+            }
+            return if (pos >= 0) pos else 0
+        }
+        val pos = appFilteredList.indexOfFirst { app ->
+            app.appLabel.uppercase().startsWith(letter)
+        }
+        return if (pos >= 0) pos else -1
+    }
+
+    private var highlightLetter: String? = null
+
+    fun setHighlightLetter(letter: String?) {
+        highlightLetter = letter
+        notifyDataSetChanged()
+    }
+
+    fun isHighlighted(appLabel: String): Boolean {
+        val hl = highlightLetter ?: return false
+        if (hl == "#") return appLabel.isNotEmpty() && !appLabel[0].isLetter()
+        return appLabel.uppercase().startsWith(hl)
+    }
+
     class ViewHolder(private val binding: AdapterAppDrawerBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(
             flag: Int,
             appLabelGravity: Int,
             myUserHandle: UserHandle,
             appModel: AppModel,
+            highlighted: Boolean,
+            isIndexActive: Boolean,
             clickListener: (AppModel) -> Unit,
             appDeleteListener: (AppModel) -> Unit,
             appInfoListener: (AppModel) -> Unit,
@@ -184,6 +216,12 @@ class AppDrawerAdapter(
                 if (appModel.isNew) append(" ✦")
             }
             appTitle.gravity = appLabelGravity
+
+            if (isIndexActive) {
+                appTitle.alpha = if (highlighted) 1.0f else 0.3f
+            } else {
+                appTitle.alpha = 1.0f
+            }
             otherProfileIndicator.isVisible = appModel.user != myUserHandle
 
             appTitle.setOnClickListener { clickListener(appModel) }

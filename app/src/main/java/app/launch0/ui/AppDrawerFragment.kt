@@ -1,10 +1,12 @@
 package app.launch0.ui
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -63,6 +65,7 @@ class AppDrawerFragment : Fragment() {
         initViews()
         initSearch()
         initAdapter()
+        initAlphabetIndex()
         initObservers()
         initClickListeners()
     }
@@ -206,6 +209,38 @@ class AppDrawerFragment : Fragment() {
         if (requireContext().isEinkDisplay().not())
             binding.recyclerView.layoutAnimation =
                 AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_anim_from_bottom)
+    }
+
+    private fun initAlphabetIndex() {
+        val isRightAligned = prefs.appLabelAlignment == Gravity.END
+        val layoutParams = binding.alphabetIndex.layoutParams as FrameLayout.LayoutParams
+        layoutParams.gravity = if (isRightAligned) {
+            Gravity.START or Gravity.CENTER_VERTICAL
+        } else {
+            Gravity.END or Gravity.CENTER_VERTICAL
+        }
+        if (isRightAligned) {
+            layoutParams.marginStart = resources.getDimensionPixelSize(R.dimen.alphabet_index_margin)
+            layoutParams.marginEnd = 0
+        } else {
+            layoutParams.marginStart = 0
+            layoutParams.marginEnd = resources.getDimensionPixelSize(R.dimen.alphabet_index_margin)
+        }
+        binding.alphabetIndex.layoutParams = layoutParams
+        binding.alphabetIndex.appLabelGravity = prefs.appLabelAlignment
+
+        binding.alphabetIndex.onLetterSelected = { letter ->
+            binding.search.hideKeyboard()
+            val position = adapter.getPositionForLetter(letter)
+            if (position >= 0) {
+                linearLayoutManager.scrollToPositionWithOffset(position, 0)
+            }
+            adapter.setHighlightLetter(letter)
+        }
+
+        binding.alphabetIndex.onLetterDeselected = {
+            adapter.setHighlightLetter(null)
+        }
     }
 
     private fun initObservers() {
