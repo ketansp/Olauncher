@@ -4,10 +4,10 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Path
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.util.TypedValue
-import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.OvershootInterpolator
@@ -21,6 +21,10 @@ class AlphabetIndexView @JvmOverloads constructor(
 
     private val letters = listOf("#") + ('A'..'Z').map { it.toString() }
 
+    private val letterStripWidth = dp(20f)
+    private val bubbleRadius = dp(28f)
+    private val bubbleOffsetX = dp(56f)
+
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         typeface = Typeface.create("sans-serif-light", Typeface.NORMAL)
@@ -29,18 +33,35 @@ class AlphabetIndexView @JvmOverloads constructor(
 
     private val highlightPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
-        typeface = Typeface.create("sans-serif", Typeface.BOLD)
+        typeface = Typeface.create("sans-serif-medium", Typeface.BOLD)
         textSize = sp(10f)
     }
 
+    private val bubblePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.FILL
+    }
+
+    private val bubbleTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        textAlign = Paint.Align.CENTER
+        typeface = Typeface.create("sans-serif", Typeface.BOLD)
+        textSize = sp(24f)
+    }
+
+    private val connectorPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.FILL
+    }
+
     private var activeLetter: String? = null
+    private var activeLetterY = 0f
     private var letterAnimProgress = 0f
+    private var bubbleAnimProgress = 0f
     private var letterAnimator: ValueAnimator? = null
+    private var bubbleAnimator: ValueAnimator? = null
     private var isTouching = false
 
     var onLetterSelected: ((String) -> Unit)? = null
     var onLetterDeselected: (() -> Unit)? = null
-    var appLabelGravity: Int = Gravity.START
+    var isRightAligned: Boolean = false
         set(value) {
             field = value
             invalidate()
@@ -49,6 +70,8 @@ class AlphabetIndexView @JvmOverloads constructor(
     private var normalColor: Int = 0
     private var dimColor: Int = 0
     private var highlightColor: Int = 0
+    private var bubbleColor: Int = 0
+    private var bubbleTextColor: Int = 0
 
     init {
         resolveColors()
@@ -60,12 +83,19 @@ class AlphabetIndexView @JvmOverloads constructor(
         context.theme.resolveAttribute(R.attr.primaryColor, typedValue, true)
         normalColor = typedValue.data
         highlightColor = normalColor
+        bubbleColor = normalColor
 
         context.theme.resolveAttribute(R.attr.primaryColorTrans50, typedValue, true)
         dimColor = typedValue.data
 
+        context.theme.resolveAttribute(R.attr.primaryInverseColor, typedValue, true)
+        bubbleTextColor = typedValue.data
+
         textPaint.color = dimColor
         highlightPaint.color = highlightColor
+        bubblePaint.color = bubbleColor
+        bubbleTextPaint.color = bubbleTextColor
+        connectorPaint.color = bubbleColor
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -73,56 +103,127 @@ class AlphabetIndexView @JvmOverloads constructor(
         if (letters.isEmpty()) return
 
         val itemHeight = height.toFloat() / letters.size
-        val centerX = width / 2f
+        // Strip on right when apps are left-aligned, strip on left when apps are right-aligned
+        val stripCenterX = if (isRightAligned) letterStripWidth / 2f else width - letterStripWidth / 2f
 
+        // Draw letter strip
         for (i in letters.indices) {
             val letter = letters[i]
             val y = itemHeight * i + itemHeight / 2f + textPaint.textSize / 3f
 
             if (letter == activeLetter && isTouching) {
-                val scale = 1f + 0.5f * letterAnimProgress
+                val scale = 1f + 0.3f * letterAnimProgress
                 canvas.save()
-                canvas.scale(scale, scale, centerX, y - textPaint.textSize / 3f)
+                canvas.scale(scale, scale, stripCenterX, y - textPaint.textSize / 3f)
                 highlightPaint.alpha = 255
-                canvas.drawText(letter, centerX, y, highlightPaint)
+                canvas.drawText(letter, stripCenterX, y, highlightPaint)
                 canvas.restore()
             } else {
                 textPaint.color = if (isTouching) dimColor else normalColor
-                textPaint.alpha = if (isTouching) 130 else 180
-                canvas.drawText(letter, centerX, y, textPaint)
+                textPaint.alpha = if (isTouching) 100 else 180
+                canvas.drawText(letter, stripCenterX, y, textPaint)
             }
+        }
+
+        // Draw bubble when touching
+        if (isTouching && activeLetter != null && bubbleAnimProgress > 0f) {
+            // Bubble floats inward: to the left of strip when strip is on right, and vice versa
+            val bubbleCenterX = if (isRightAligned) {
+                letterStripWidth / 2f + bubbleOffsetX
+            } else {
+                width - letterStripWidth / 2f - bubbleOffsetX
+            }
+            val bubbleCenterY = activeLetterY
+
+            val scale = bubbleAnimProgress
+            canvas.save()
+            canvas.scale(scale, scale, bubbleCenterX, bubbleCenterY)
+
+            // Draw connector line from strip to bubble
+            val connectorPath = Path()
+            val connectorStartX = if (isRightAligned) {
+                letterStripWidth / 2f + dp(6f)
+            } else {
+                width - letterStripWidth / 2f - dp(6f)
+            }
+            val connectorEndX = if (isRightAligned) {
+                bubbleCenterX - bubbleRadius + dp(4f)
+            } else {
+                bubbleCenterX + bubbleRadius - dp(4f)
+            }
+            connectorPaint.alpha = (200 * bubbleAnimProgress).toInt()
+            val connectorWidth = dp(6f)
+            connectorPath.moveTo(connectorStartX, bubbleCenterY - connectorWidth)
+            connectorPath.lineTo(connectorEndX, bubbleCenterY - connectorWidth * 1.5f)
+            connectorPath.lineTo(connectorEndX, bubbleCenterY + connectorWidth * 1.5f)
+            connectorPath.lineTo(connectorStartX, bubbleCenterY + connectorWidth)
+            connectorPath.close()
+            canvas.drawPath(connectorPath, connectorPaint)
+
+            // Draw bubble circle
+            bubblePaint.alpha = (230 * bubbleAnimProgress).toInt()
+            canvas.drawCircle(bubbleCenterX, bubbleCenterY, bubbleRadius, bubblePaint)
+
+            // Draw letter in bubble
+            bubbleTextPaint.alpha = (255 * bubbleAnimProgress).toInt()
+            val textY = bubbleCenterY + bubbleTextPaint.textSize / 3f
+            canvas.drawText(activeLetter!!, bubbleCenterX, textY, bubbleTextPaint)
+
+            canvas.restore()
+        }
+    }
+
+    private fun isTouchOnStrip(x: Float): Boolean {
+        val touchMargin = dp(12f)
+        return if (isRightAligned) {
+            x <= letterStripWidth + touchMargin
+        } else {
+            x >= width - letterStripWidth - touchMargin
         }
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
-            MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
+            MotionEvent.ACTION_DOWN -> {
+                if (!isTouchOnStrip(event.x)) return false
                 isTouching = true
-                val index = getLetterIndex(event.y)
-                if (index in letters.indices) {
-                    val letter = letters[index]
-                    if (letter != activeLetter) {
-                        activeLetter = letter
-                        animateLetterPop()
-                        onLetterSelected?.invoke(letter)
-                    }
-                }
+                handleLetterTouch(event.y)
+                parent?.requestDisallowInterceptTouchEvent(true)
+                invalidate()
+                return true
+            }
+            MotionEvent.ACTION_MOVE -> {
+                if (!isTouching) return false
+                handleLetterTouch(event.y)
                 parent?.requestDisallowInterceptTouchEvent(true)
                 invalidate()
                 return true
             }
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                isTouching = false
-                letterAnimator?.cancel()
-                letterAnimProgress = 0f
-                activeLetter = null
+                if (!isTouching) return false
+                animateBubbleOut()
                 parent?.requestDisallowInterceptTouchEvent(false)
                 onLetterDeselected?.invoke()
-                invalidate()
                 return true
             }
         }
-        return super.onTouchEvent(event)
+        return false
+    }
+
+    private fun handleLetterTouch(y: Float) {
+        val index = getLetterIndex(y)
+        if (index in letters.indices) {
+            val letter = letters[index]
+            val itemHeight = height.toFloat() / letters.size
+            activeLetterY = (itemHeight * index + itemHeight / 2f)
+                .coerceIn(bubbleRadius, height - bubbleRadius)
+            if (letter != activeLetter) {
+                activeLetter = letter
+                animateLetterPop()
+                animateBubbleIn()
+                onLetterSelected?.invoke(letter)
+            }
+        }
     }
 
     private fun getLetterIndex(y: Float): Int {
@@ -141,6 +242,46 @@ class AlphabetIndexView @JvmOverloads constructor(
             }
             start()
         }
+    }
+
+    private fun animateBubbleIn() {
+        if (bubbleAnimProgress >= 1f) return
+        bubbleAnimator?.cancel()
+        bubbleAnimator = ValueAnimator.ofFloat(bubbleAnimProgress, 1f).apply {
+            duration = 200
+            interpolator = OvershootInterpolator(1.5f)
+            addUpdateListener {
+                bubbleAnimProgress = it.animatedValue as Float
+                invalidate()
+            }
+            start()
+        }
+    }
+
+    private fun animateBubbleOut() {
+        bubbleAnimator?.cancel()
+        bubbleAnimator = ValueAnimator.ofFloat(bubbleAnimProgress, 0f).apply {
+            duration = 150
+            addUpdateListener {
+                bubbleAnimProgress = it.animatedValue as Float
+                if (bubbleAnimProgress <= 0f) {
+                    isTouching = false
+                    letterAnimator?.cancel()
+                    letterAnimProgress = 0f
+                    activeLetter = null
+                }
+                invalidate()
+            }
+            start()
+        }
+    }
+
+    private fun dp(value: Float): Float {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            value,
+            resources.displayMetrics
+        )
     }
 
     private fun sp(value: Float): Float {
