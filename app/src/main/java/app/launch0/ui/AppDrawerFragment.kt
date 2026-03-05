@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -211,7 +212,17 @@ class AppDrawerFragment : Fragment() {
     }
 
     private fun initAlphabetIndex() {
-        binding.alphabetIndex.isRightAligned = prefs.appLabelAlignment == Gravity.END
+        val isRightAligned = prefs.appLabelAlignment == Gravity.END
+        binding.alphabetIndex.isRightAligned = isRightAligned
+
+        // Move strip to opposite side of app labels
+        val layoutParams = binding.alphabetIndex.layoutParams as FrameLayout.LayoutParams
+        layoutParams.gravity = if (isRightAligned) {
+            Gravity.START or Gravity.CENTER_VERTICAL
+        } else {
+            Gravity.END or Gravity.CENTER_VERTICAL
+        }
+        binding.alphabetIndex.layoutParams = layoutParams
 
         binding.alphabetIndex.onLetterSelected = { letter ->
             binding.search.hideKeyboard()

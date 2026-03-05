@@ -82,9 +82,9 @@
 
         <app.launch0.ui.AlphabetIndexView
             android:id="@+id/alphabetIndex"
-            android:layout_width="match_parent"
+            android:layout_width="20dp"
             android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="end|center_vertical"
             android:layout_marginVertical="8dp" />
 
     </FrameLayout>

@@ -21,9 +21,8 @@ class AlphabetIndexView @JvmOverloads constructor(
 
     private val letters = listOf("#") + ('A'..'Z').map { it.toString() }
 
-    private val letterStripWidth = dp(20f)
     private val bubbleRadius = dp(28f)
-    private val bubbleOffsetX = dp(56f)
+    private val bubbleOffsetX = dp(48f)
 
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
@@ -103,8 +102,7 @@ class AlphabetIndexView @JvmOverloads constructor(
         if (letters.isEmpty()) return
 
         val itemHeight = height.toFloat() / letters.size
-        // Strip on right when apps are left-aligned, strip on left when apps are right-aligned
-        val stripCenterX = if (isRightAligned) letterStripWidth / 2f else width - letterStripWidth / 2f
+        val stripCenterX = width / 2f
 
         // Draw letter strip
         for (i in letters.indices) {
@@ -125,13 +123,12 @@ class AlphabetIndexView @JvmOverloads constructor(
             }
         }
 
-        // Draw bubble when touching
+        // Draw bubble outside view bounds when touching
         if (isTouching && activeLetter != null && bubbleAnimProgress > 0f) {
-            // Bubble floats inward: to the left of strip when strip is on right, and vice versa
             val bubbleCenterX = if (isRightAligned) {
-                letterStripWidth / 2f + bubbleOffsetX
+                width / 2f + bubbleOffsetX
             } else {
-                width - letterStripWidth / 2f - bubbleOffsetX
+                width / 2f - bubbleOffsetX
             }
             val bubbleCenterY = activeLetterY
 
@@ -139,12 +136,12 @@ class AlphabetIndexView @JvmOverloads constructor(
             canvas.save()
             canvas.scale(scale, scale, bubbleCenterX, bubbleCenterY)
 
-            // Draw connector line from strip to bubble
+            // Draw connector from strip to bubble
             val connectorPath = Path()
             val connectorStartX = if (isRightAligned) {
-                letterStripWidth / 2f + dp(6f)
+                width / 2f + dp(4f)
             } else {
-                width - letterStripWidth / 2f - dp(6f)
+                width / 2f - dp(4f)
             }
             val connectorEndX = if (isRightAligned) {
                 bubbleCenterX - bubbleRadius + dp(4f)
@@ -152,7 +149,7 @@ class AlphabetIndexView @JvmOverloads constructor(
                 bubbleCenterX + bubbleRadius - dp(4f)
             }
             connectorPaint.alpha = (200 * bubbleAnimProgress).toInt()
-            val connectorWidth = dp(6f)
+            val connectorWidth = dp(5f)
             connectorPath.moveTo(connectorStartX, bubbleCenterY - connectorWidth)
             connectorPath.lineTo(connectorEndX, bubbleCenterY - connectorWidth * 1.5f)
             connectorPath.lineTo(connectorEndX, bubbleCenterY + connectorWidth * 1.5f)
@@ -173,19 +170,9 @@ class AlphabetIndexView @JvmOverloads constructor(
         }
     }
 
-    private fun isTouchOnStrip(x: Float): Boolean {
-        val touchMargin = dp(12f)
-        return if (isRightAligned) {
-            x <= letterStripWidth + touchMargin
-        } else {
-            x >= width - letterStripWidth - touchMargin
-        }
-    }
-
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                if (!isTouchOnStrip(event.x)) return false
                 isTouching = true
                 handleLetterTouch(event.y)
                 parent?.requestDisallowInterceptTouchEvent(true)
@@ -193,14 +180,12 @@ class AlphabetIndexView @JvmOverloads constructor(
                 return true
             }
             MotionEvent.ACTION_MOVE -> {
-                if (!isTouching) return false
                 handleLetterTouch(event.y)
                 parent?.requestDisallowInterceptTouchEvent(true)
                 invalidate()
                 return true
             }
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                if (!isTouching) return false
                 animateBubbleOut()
                 parent?.requestDisallowInterceptTouchEvent(false)
                 onLetterDeselected?.invoke()
